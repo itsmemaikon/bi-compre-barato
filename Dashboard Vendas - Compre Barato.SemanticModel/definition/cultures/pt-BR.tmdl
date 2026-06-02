@@ -8,7 +8,7 @@ cultureInfo pt-BR
 			    "f_venda": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas"
+			          "ConceptualEntity": "fFaturamento"
 			        }
 			      },
 			      "State": "Generated",
@@ -36,7 +36,7 @@ cultureInfo pt-BR
 			    "f_venda.data_emissao": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
+			          "ConceptualEntity": "fFaturamento",
 			          "ConceptualProperty": "DataEmissao"
 			        }
 			      },
@@ -136,7 +136,7 @@ cultureInfo pt-BR
 			    "f_venda.N_fe": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
+			          "ConceptualEntity": "fFaturamento",
 			          "ConceptualProperty": "NFe"
 			        }
 			      },
@@ -165,8 +165,8 @@ cultureInfo pt-BR
 			    "f_venda.cd_produto": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
-			          "ConceptualProperty": "cdProduto"
+			          "ConceptualEntity": "fFaturamento",
+			          "ConceptualProperty": "Código Produto"
 			        }
 			      },
 			      "State": "Generated",
@@ -189,8 +189,8 @@ cultureInfo pt-BR
 			    "f_venda.cd_vendedor": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
-			          "ConceptualProperty": "cdVendedor"
+			          "ConceptualEntity": "fFaturamento",
+			          "ConceptualProperty": "Código Vendedor"
 			        }
 			      },
 			      "State": "Generated",
@@ -213,8 +213,8 @@ cultureInfo pt-BR
 			    "f_venda.qtd_iten": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
-			          "ConceptualProperty": "QtdItens"
+			          "ConceptualEntity": "fFaturamento",
+			          "ConceptualProperty": "Qtd Itens"
 			        }
 			      },
 			      "State": "Generated",
@@ -236,8 +236,8 @@ cultureInfo pt-BR
 			    "f_venda.valor_unitario": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
-			          "ConceptualProperty": "ValorUnitario"
+			          "ConceptualEntity": "fFaturamento",
+			          "ConceptualProperty": "Valor Unitario"
 			        }
 			      },
 			      "State": "Generated",
@@ -259,8 +259,8 @@ cultureInfo pt-BR
 			    "f_venda.valor_total": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fVendas",
-			          "ConceptualProperty": "ValorTotal"
+			          "ConceptualEntity": "fFaturamento",
+			          "ConceptualProperty": "Valor Total"
 			        }
 			      },
 			      "State": "Generated",
@@ -325,7 +325,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "fMetas",
-			          "ConceptualProperty": "cdVendedor"
+			          "ConceptualProperty": "Código Vendedor"
 			        }
 			      },
 			      "State": "Generated",
@@ -349,7 +349,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "fMetas",
-			          "ConceptualProperty": "ValorMeta"
+			          "ConceptualProperty": "Valor Meta"
 			        }
 			      },
 			      "State": "Generated",
@@ -1824,7 +1824,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "dProduto",
-			          "ConceptualProperty": "cdProduto"
+			          "ConceptualProperty": "Código Produto"
 			        }
 			      },
 			      "State": "Generated",
@@ -1917,7 +1917,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "dVendedor",
-			          "ConceptualProperty": "cdVendedor"
+			          "ConceptualProperty": "Código Vendedor"
 			        }
 			      },
 			      "State": "Generated",
@@ -2136,7 +2136,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "Faturamento"
+			          "ConceptualProperty": "Total Faturado"
 			        }
 			      },
 			      "State": "Generated",
@@ -2162,7 +2162,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "Qtd Vendas"
+			          "ConceptualProperty": "Qtd Notas"
 			        }
 			      },
 			      "State": "Generated",
@@ -2260,7 +2260,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "% Atingimento Meta"
+			          "ConceptualProperty": "% Meta"
 			        }
 			      },
 			      "State": "Generated",
@@ -2346,7 +2346,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "Meta"
+			          "ConceptualProperty": "Total Meta"
 			        }
 			      },
 			      "State": "Generated",
@@ -2395,7 +2395,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "Faturamento YoY"
+			          "ConceptualProperty": "Total Faturado YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -2421,7 +2421,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "Qtd Vendas YoY"
+			          "ConceptualProperty": "Qtd Notas YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -2509,7 +2509,7 @@ cultureInfo pt-BR
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "Meta YoY"
+			          "ConceptualProperty": "Total Meta YoY"
 			        }
 			      },
 			      "State": "Generated",
@@ -5513,7 +5513,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_d_vendedor": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5557,7 +5557,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_d_produto": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5601,7 +5601,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_d_calendario": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5709,7 +5709,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_positivação_top_31": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5741,7 +5741,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_qtd_vendas_top_31": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5773,7 +5773,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_positivação_top_3": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5805,7 +5805,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_qtd_vendas_top_3": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5837,7 +5837,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento_top_31": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5869,7 +5869,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento_top_3": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5901,7 +5901,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento_vendedor_top_3": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -5933,7 +5933,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento_vendedor_top_2": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6061,7 +6061,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento_vendedor_top_1": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6093,7 +6093,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_rank": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6157,7 +6157,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_positivação_YoY1": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6189,7 +6189,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_ticket_médio_YoY1": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6221,7 +6221,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_qtd_vendas_YoY1": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6253,7 +6253,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_YoY": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6317,7 +6317,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_positivação_YoY": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6349,7 +6349,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_ticket_médio_YoY": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6381,7 +6381,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_qtd_vendas_YoY": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6413,7 +6413,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento_YoY": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6509,7 +6509,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_atingimento_meta": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6573,7 +6573,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_positivação": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6605,7 +6605,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_ticket_médio": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6637,7 +6637,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_qtd_vendas": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -6669,7 +6669,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_medida_faturamento": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -7373,7 +7373,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_valor_total": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -7431,7 +7431,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_valor_unitario": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -7463,7 +7463,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_qtd_iten": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -7495,7 +7495,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_N_fe": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {
@@ -7527,7 +7527,7 @@ cultureInfo pt-BR
 			    },
 			    "f_venda_has_data_emissao": {
 			      "Binding": {
-			        "ConceptualEntity": "fVendas"
+			        "ConceptualEntity": "fFaturamento"
 			      },
 			      "State": "Generated",
 			      "Roles": {

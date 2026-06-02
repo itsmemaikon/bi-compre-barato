@@ -1,0 +1,71 @@
+table pExtracaoValor
+	lineageTag: 399ce193-93b7-4e86-8b8a-b8c27192157d
+
+	column Nome
+		lineageTag: 73b2a00f-822d-41c4-9bfe-d50e7135628b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pExtracaoValor Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pExtracaoValor Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pExtracaoValor Campos'
+		isHidden
+		lineageTag: 2bf8bbec-d1f5-487a-8a1b-f8120f4ba0da
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pExtracaoValor Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pExtracaoValor Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: ad895771-7dc1-42d1-9563-6278ae8adeb7
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tabela
+		lineageTag: ed778018-2010-4f22-8a91-9e1209912d18
+		summarizeBy: none
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pExtracaoValor = calculated
+		mode: import
+		source =
+				{
+				    ("Positivação", NAMEOF('Medidas'[Positivação]), 0, "Faturamento"),
+				    ("Qtd Itens", NAMEOF('Medidas'[Qtd Itens]), 1, "Faturamento"),
+				    ("Qtd Notas", NAMEOF('Medidas'[Qtd Notas]), 2, "Faturamento"),
+				    ("Rateio Produto", NAMEOF('Medidas'[Rateio Produto]), 3, "Faturamento"),
+				    ("Ticket Médio", NAMEOF('Medidas'[Ticket Médio]), 4, "Faturamento"),
+				    ("Total Faturado", NAMEOF('Medidas'[Total Faturado]), 5, "Faturamento"),
+				    ("% Faturamento YoY", NAMEOF('Medidas'[% Faturamento YoY]), 6, "Faturamento"),
+				    ("% Positivação YoY", NAMEOF('Medidas'[% Positivação YoY]), 7, "Faturamento"),
+				    ("% Qtd Vendas YoY", NAMEOF('Medidas'[% Qtd Vendas YoY]), 8, "Faturamento"),
+				    ("% Ticket Médio YoY", NAMEOF('Medidas'[% Ticket Médio YoY]), 9, "Faturamento"),
+				    ("Faturamento YoY", NAMEOF('Medidas'[Total Faturado YoY]), 10, "Faturamento"),
+				    ("Positivação YoY", NAMEOF('Medidas'[Positivação YoY]), 11, "Faturamento"),
+				    ("Qtd Vendas YoY", NAMEOF('Medidas'[Qtd Notas YoY]), 12, "Faturamento"),
+				    ("Ticket Médio YoY", NAMEOF('Medidas'[Ticket Médio YoY]), 13, "Faturamento"),
+				    ("% Meta", NAMEOF('Medidas'[% Meta]), 14, "Meta"),
+				    ("Total Meta", NAMEOF('Medidas'[Total Meta]), 15, "Meta"),
+				    ("Total Meta YoY", NAMEOF('Medidas'[Total Meta YoY]), 16, "Meta"),
+				    ("‎", NAMEOF('Medidas'[Medida Vazia]), 17, "")
+				}
+
+	annotation PBI_Id = 7203a5d565754661bf3f2ceeb9bc044f
+

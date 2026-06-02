@@ -1,12 +1,12 @@
 table dProduto
 	lineageTag: da01d73e-0c2d-4ef6-a063-d70dc1f48646
 
-	column cdProduto
+	column 'Código Produto'
 		dataType: int64
 		formatString: 0
 		lineageTag: 18979579-38fe-441b-9b56-8b5adc10bd0e
 		summarizeBy: none
-		sourceColumn: cdProduto
+		sourceColumn: Código Produto
 
 		annotation SummarizationSetBy = Automatic
 
@@ -56,15 +56,17 @@ table dProduto
 
 	partition dProduto-44b45729-9962-4950-98bd-adb82e097522 = m
 		mode: import
+		queryGroup: Dimensões
 		source =
 				let
 				    Fonte = Excel.Workbook(File.Contents(#"Diretório Base de Dados" & "\Base de Dados.xlsx"), null, true),
 				    Planilha1_Sheet = Fonte{[Item="Produtos",Kind="Sheet"]}[Data],
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
 				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Cabeçalhos Promovidos",{"cdProduto", "Produto", "Grupo Produto", "Linha Produto", "Preço Unitário", "Rateio"}),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"cdProduto", Int64.Type}, {"Produto", type text}, {"Grupo Produto", type text}, {"Linha Produto", type text}, {"Preço Unitário", type number}, {"Rateio", Percentage.Type}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"cdProduto", Int64.Type}, {"Produto", type text}, {"Grupo Produto", type text}, {"Linha Produto", type text}, {"Preço Unitário", type number}, {"Rateio", Percentage.Type}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"cdProduto", "Código Produto"}})
 				in
-				    #"Tipo Alterado"
+				    #"Colunas Renomeadas"
 
 	annotation PBI_ResultType = Table
 

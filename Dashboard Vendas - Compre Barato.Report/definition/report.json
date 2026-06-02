@@ -43,6 +43,13 @@
                 "Value": "false"
               }
             }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
           }
         }
       }
@@ -139,6 +146,11 @@
         {
           "name": "Plano_de_Fundo312101213833024715.png",
           "path": "Plano_de_Fundo312101213833024715.png",
+          "type": "Image"
+        },
+        {
+          "name": "Plano_de_Fundo42056863524211807.png",
+          "path": "Plano_de_Fundo42056863524211807.png",
           "type": "Image"
         },
         {

@@ -23,7 +23,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Faturamento"
+                  "Property": "Total Faturado"
                 }
               },
               "queryRef": "Medidas.Faturamento"
@@ -87,7 +87,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Faturamento"
+                "Property": "Total Faturado"
               }
             },
             "direction": "Descending"
@@ -152,12 +152,13 @@
           }
         ],
         "root": {
+          "isToggled": true,
           "children": [
             {
               "identityValues": [
                 {
                   "Literal": {
-                    "Value": "'Marcelo Barreto'"
+                    "Value": "'Gabriel Azevedo'"
                   }
                 }
               ],
@@ -167,7 +168,7 @@
                   "identityValues": [
                     {
                       "Literal": {
-                        "Value": "'Ricardo Linhares'"
+                        "Value": "'Diogo Carvalho'"
                       }
                     }
                   ],

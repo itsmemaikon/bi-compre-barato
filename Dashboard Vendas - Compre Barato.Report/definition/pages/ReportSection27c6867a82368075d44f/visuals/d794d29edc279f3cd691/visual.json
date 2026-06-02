@@ -23,7 +23,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Atingimento Meta"
+                  "Property": "% Meta"
                 }
               },
               "queryRef": "Medidas.% Atingimento Meta",
@@ -42,7 +42,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "% Atingimento Meta"
+                "Property": "% Meta"
               }
             },
             "direction": "Descending"
@@ -210,7 +210,7 @@
                                       "Entity": "Medidas"
                                     }
                                   },
-                                  "Property": "% Atingimento Meta"
+                                  "Property": "% Meta"
                                 }
                               },
                               "Right": {
@@ -239,7 +239,7 @@
                                           "Entity": "Medidas"
                                         }
                                       },
-                                      "Property": "% Atingimento Meta"
+                                      "Property": "% Meta"
                                     }
                                   },
                                   "Right": {
@@ -259,7 +259,7 @@
                                           "Entity": "Medidas"
                                         }
                                       },
-                                      "Property": "% Atingimento Meta"
+                                      "Property": "% Meta"
                                     }
                                   },
                                   "Right": {
@@ -288,7 +288,7 @@
                                       "Entity": "Medidas"
                                     }
                                   },
-                                  "Property": "% Atingimento Meta"
+                                  "Property": "% Meta"
                                 }
                               },
                               "Right": {

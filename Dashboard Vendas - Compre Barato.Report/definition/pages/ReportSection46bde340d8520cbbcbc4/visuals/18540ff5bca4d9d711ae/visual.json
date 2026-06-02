@@ -23,10 +23,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Qtd Vendas"
+                  "Property": "Qtd Notas"
                 }
               },
-              "queryRef": "Medidas.Qtd Vendas"
+              "queryRef": "Medidas.Qtd Vendas",
+              "nativeQueryRef": "Qtd Notas"
             }
           ]
         }
@@ -41,7 +42,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Qtd Vendas"
+                "Property": "Qtd Notas"
               }
             },
             "direction": "Descending"

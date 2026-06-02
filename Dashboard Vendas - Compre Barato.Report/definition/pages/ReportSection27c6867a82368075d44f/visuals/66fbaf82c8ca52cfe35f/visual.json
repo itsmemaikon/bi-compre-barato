@@ -41,7 +41,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Faturamento"
+                  "Property": "Total Faturado"
                 }
               },
               "queryRef": "Medidas.Faturamento"
@@ -59,7 +59,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Faturamento"
+                "Property": "Total Faturado"
               }
             },
             "direction": "Descending"
@@ -318,7 +318,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "927031f304eb21900ee0",
+        "name": "3cc719e3039dc73bcc68",
         "field": {
           "Column": {
             "Expression": {
@@ -374,7 +374,7 @@
                                 "Source": "m"
                               }
                             },
-                            "Property": "Faturamento"
+                            "Property": "Total Faturado"
                           }
                         }
                       }

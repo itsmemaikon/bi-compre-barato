@@ -1,20 +1,20 @@
 table fMetas
 	lineageTag: 0ec7c232-5bfe-41a6-9e78-b7b760f10704
 
-	column cdVendedor
+	column 'Código Vendedor'
 		dataType: int64
 		formatString: 0
 		lineageTag: 884a46d8-9987-4263-b674-f885421ccb19
 		summarizeBy: none
-		sourceColumn: cdVendedor
+		sourceColumn: Código Vendedor
 
 		annotation SummarizationSetBy = Automatic
 
-	column ValorMeta
+	column 'Valor Meta'
 		dataType: double
 		lineageTag: 10f2c5cd-00a3-430c-800f-ab1270eaeb11
 		summarizeBy: sum
-		sourceColumn: ValorMeta
+		sourceColumn: Valor Meta
 
 		annotation SummarizationSetBy = Automatic
 
@@ -33,6 +33,7 @@ table fMetas
 
 	partition fMetas-8c75f9a5-9347-4673-8b5a-7bff5fea51e5 = m
 		mode: import
+		queryGroup: Fatos
 		source =
 				let
 				    Fonte = Excel.Workbook(File.Contents(#"Diretório Base de Dados" & "\Base de Dados.xlsx"), null, true),
@@ -47,9 +48,10 @@ table fMetas
 				    #"Consultas Mescladas" = Table.NestedJoin(#"Ano Inserido", {"Mês", "Ano"}, dCalendario, {"Mês", "Ano"}, "dCalendario", JoinKind.LeftOuter),
 				    #"dCalendario Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "dCalendario", {"Data", "Dias do Mês"}, {"Data", "Dias do Mês"}),
 				    #"Divisão Inserida" = Table.AddColumn(#"dCalendario Expandido", "ValorMeta", each [ValorMeta1] / [Dias do Mês], type number),
-				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Divisão Inserida",{"cdVendedor", "Data", "ValorMeta"})
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Divisão Inserida",{"cdVendedor", "Data", "ValorMeta"}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Outras Colunas Removidas",{{"cdVendedor", "Código Vendedor"}, {"ValorMeta", "Valor Meta"}})
 				in
-				    #"Outras Colunas Removidas"
+				    #"Colunas Renomeadas1"
 
 	annotation PBI_ResultType = Table
 

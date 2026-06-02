@@ -23,7 +23,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Meta"
+                  "Property": "Total Meta"
                 }
               },
               "queryRef": "Medidas.Meta"
@@ -41,7 +41,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Meta"
+                "Property": "Total Meta"
               }
             },
             "direction": "Descending"

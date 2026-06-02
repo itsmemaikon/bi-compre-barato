@@ -1,4 +1,4 @@
-table fVendas
+table fFaturamento
 	lineageTag: 8d6d911a-4f32-4a81-9643-dd90f39c8c5f
 
 	column DataEmissao
@@ -23,51 +23,51 @@ table fVendas
 
 		annotation SummarizationSetBy = Automatic
 
-	column cdProduto
+	column 'Código Produto'
 		dataType: int64
 		formatString: 0
 		lineageTag: da25c752-23b5-4559-9ac5-a203b84c83c3
 		summarizeBy: none
-		sourceColumn: cdProduto
+		sourceColumn: Código Produto
 
 		annotation SummarizationSetBy = Automatic
 
-	column cdVendedor
+	column 'Código Vendedor'
 		dataType: int64
 		formatString: 0
 		lineageTag: 681661ed-2aff-4a49-a4b3-5b835b777d0d
 		summarizeBy: none
-		sourceColumn: cdVendedor
+		sourceColumn: Código Vendedor
 
 		annotation SummarizationSetBy = Automatic
 
-	column QtdItens
+	column 'Qtd Itens'
 		dataType: int64
 		formatString: #,0
 		lineageTag: bdc20918-16f6-41de-9b44-8314754a56fb
 		summarizeBy: sum
-		sourceColumn: QtdItens
+		sourceColumn: Qtd Itens
 
 		changedProperty = FormatString
 
 		annotation SummarizationSetBy = Automatic
 
-	column ValorUnitario
+	column 'Valor Unitario'
 		dataType: double
 		lineageTag: e36ded35-6992-497f-ba7e-324f28e45f42
 		summarizeBy: sum
-		sourceColumn: ValorUnitario
+		sourceColumn: Valor Unitario
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column ValorTotal
+	column 'Valor Total'
 		dataType: double
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		lineageTag: 19adeea6-8cd6-45c9-889b-706eb2c0bfa3
 		summarizeBy: sum
-		sourceColumn: ValorTotal
+		sourceColumn: Valor Total
 
 		changedProperty = FormatString
 
@@ -75,19 +75,21 @@ table fVendas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	partition fVendas-0e896f0f-f6a2-429c-b1f7-4a587255b1d0 = m
+	partition fFaturamento-0e896f0f-f6a2-429c-b1f7-4a587255b1d0 = m
 		mode: import
+		queryGroup: Fatos
 		source =
 				let
 				    Fonte = Excel.Workbook(File.Contents(#"Diretório Base de Dados" & "\Base de Dados.xlsx"), null, true),
 				    Planilha1_Sheet = Fonte{[Item="Vendas",Kind="Sheet"]}[Data],
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
 				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Cabeçalhos Promovidos",{"DataEmissao", "NFe", "cdProduto", "cdVendedor", "QtdItens", "ValorUnitario", "ValorTotal"}),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"DataEmissao", type date}, {"NFe", Int64.Type}, {"cdProduto", Int64.Type}, {"cdVendedor", Int64.Type}, {"QtdItens", Int64.Type}, {"ValorUnitario", type number}, {"ValorTotal", type number}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"DataEmissao", type date}, {"NFe", Int64.Type}, {"cdProduto", Int64.Type}, {"cdVendedor", Int64.Type}, {"QtdItens", Int64.Type}, {"ValorUnitario", type number}, {"ValorTotal", type number}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"cdProduto", "Código Produto"}, {"cdVendedor", "Código Vendedor"}, {"QtdItens", "Qtd Itens"}, {"ValorTotal", "Valor Total"}, {"ValorUnitario", "Valor Unitario"}})
 				in
-				    #"Tipo Alterado"
+				    #"Colunas Renomeadas"
 
-	annotation PBI_ResultType = Table
+	annotation PBI_ResultType = Exception
 
 	annotation PBI_NavigationStepName = Navegação
 

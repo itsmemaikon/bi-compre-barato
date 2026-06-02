@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "c6190cf1c0b50cb02307",
+  "position": {
+    "x": 180,
+    "y": 49.6551724137931,
+    "z": 4000,
+    "height": 71.822660098522164,
+    "width": 1085.3201970443349,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Escolha entre a opção "
+                  },
+                  {
+                    "value": "\"Matriz\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " ou "
+                  },
+                  {
+                    "value": "\"Tabela",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "\", e faça os devidos filtros de "
+                  },
+                  {
+                    "value": "\"Linhas\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", "
+                  },
+                  {
+                    "value": "\"Colunas\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " e "
+                  },
+                  {
+                    "value": "\"Valores\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " conforme a necessidade."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Para extrair para Excel selecione a "
+                  },
+                  {
+                    "value": "\"Matriz\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " ou "
+                  },
+                  {
+                    "value": "\"Tabela\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " clique na Tabelasobre o botão "
+                  },
+                  {
+                    "value": "\"Mais Opções (...)\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " na tabela, e depois clique em "
+                  },
+                  {
+                    "value": "\"Exportar Dados\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": ", depois "
+                  },
+                  {
+                    "value": "\"Dados com Layout Atual\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " e escolha a opção "
+                  },
+                  {
+                    "value": "\".xlsx\"",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
