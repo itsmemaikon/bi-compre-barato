@@ -1,5 +1,7 @@
 # 📊 Dashboard de Vendas - Compre Barato
 
+![Extração](./Imagens/Logo.png)
+
 Dashboard desenvolvido em Power BI para análise de desempenho comercial, acompanhamento de metas, faturamento, vendedores, produtos e indicadores de vendas.
 
 ## Visão Geral
@@ -18,6 +20,20 @@ O dashboard foi construído utilizando modelo dimensional (Star Schema) e contem
 - Performance por supervisor e gerente
 - Performance por produto
 - Extrações dinâmicas através de Parâmetros de Campo (Field Parameters)
+
+# 📸 Preview do Dashboard
+
+## Visão Geral
+![Visão Geral](./Imagens/Screenshots/Slide2.PNG)
+
+## Comparativo Ano x Ano
+![Ano x Ano](./Imagens/Screenshots/Slide3.PNG)
+
+## Ranking de Vendedores
+![Ranking](./Imagens/Screenshots/Slide4.PNG)
+
+## Extração Dinâmica
+![Extração](./Imagens/Screenshots/Slide5.PNG)
 
 ---
 
@@ -153,13 +169,13 @@ O relatório possui:
 Clone o repositório:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git clone https://github.com/itsmemaikon/bi-compre-barato.git
 ```
 
 Acesse a pasta:
 
 ```bash
-cd SEU-REPOSITORIO
+cd bi-compre-barato
 ```
 
 ---
@@ -277,3 +293,15 @@ Este projeto tem como objetivo demonstrar boas práticas de desenvolvimento em P
 - Field Parameters
 - Versionamento de projetos Power BI via Git
 - Estrutura PBIP para colaboração e manutenção
+
+- ---
+
+## 👨‍💻 Autor
+
+**Maikon Roberto Campanharo Lopes**
+
+Analista de Sistemas | TOTVS Datasul & Progress 4GL • Desenvolvimento Web • Power BI
+
+LinkedIn: https://www.linkedin.com/in/maikonrclopes/
+
+GitHub: https://github.com/itsmemaikon
