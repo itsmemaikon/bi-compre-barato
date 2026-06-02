@@ -69,7 +69,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Meta"
+                  "Property": "Total Meta"
                 }
               },
               "queryRef": "Medidas.Meta"
@@ -82,7 +82,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Faturamento"
+                  "Property": "Total Faturado"
                 }
               },
               "queryRef": "Medidas.Faturamento"
@@ -95,7 +95,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Atingimento Meta"
+                  "Property": "% Meta"
                 }
               },
               "queryRef": "Medidas.% Atingimento Meta",
@@ -109,10 +109,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Qtd Vendas"
+                  "Property": "Qtd Notas"
                 }
               },
-              "queryRef": "Medidas.Qtd Vendas"
+              "queryRef": "Medidas.Qtd Vendas",
+              "nativeQueryRef": "Qtd Notas"
             },
             {
               "field": {

@@ -41,7 +41,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Qtd Vendas"
+                  "Property": "Qtd Notas"
                 }
               },
               "queryRef": "Medidas.Qtd Vendas"
@@ -59,7 +59,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Qtd Vendas"
+                "Property": "Qtd Notas"
               }
             },
             "direction": "Descending"
@@ -331,7 +331,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "632af2045be733e84e74",
+        "name": "66037cfa63abb6b7dd19",
         "field": {
           "Column": {
             "Expression": {
@@ -387,7 +387,7 @@
                                 "Source": "m"
                               }
                             },
-                            "Property": "Qtd Vendas"
+                            "Property": "Qtd Notas"
                           }
                         }
                       }

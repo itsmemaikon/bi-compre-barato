@@ -144,6 +144,7 @@ table dCalendario
 
 	partition dCalendario-72c3714c-1743-46d4-a37f-6aacb5ce2dae = m
 		mode: import
+		queryGroup: Dimensões
 		source =
 				let
 				    Fonte = List.Dates(#date(2020, 1, 1), 731, #duration(1, 0, 0, 0)),
@@ -167,4 +168,6 @@ table dCalendario
 				    #"Dias inseridos no Mês"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

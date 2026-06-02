@@ -1,7 +1,7 @@
 table Medidas
 	lineageTag: d8b6dbed-c997-4cfb-9dac-4cec261e75a2
 
-	measure Faturamento = SUM(fVendas[ValorTotal])
+	measure 'Total Faturado' = SUM(fFaturamento[Valor Total])
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
 		displayFolder: Análise Geral
 		lineageTag: de031991-ab44-4b7f-84d6-6bff2b73755e
@@ -10,14 +10,14 @@ table Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure 'Qtd Vendas' = DISTINCTCOUNT(fVendas[NFe])
+	measure 'Qtd Notas' = DISTINCTCOUNT(fFaturamento[NFe])
 		formatString: #,0
 		displayFolder: Análise Geral
 		lineageTag: 6d4e3986-4168-4c43-a4a9-cbbd010a2c8b
 
 		changedProperty = FormatString
 
-	measure 'Ticket Médio' = DIVIDE([Faturamento],[Qtd Vendas])
+	measure 'Ticket Médio' = DIVIDE([Total Faturado],[Qtd Notas])
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		displayFolder: Análise Geral
 		lineageTag: f82cbfd0-6a18-435d-bad2-1ca745eff908
@@ -26,14 +26,14 @@ table Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure Positivação = DISTINCTCOUNT(fVendas[cdProduto])
+	measure Positivação = DISTINCTCOUNT(fFaturamento[Código Produto])
 		formatString: #,0
 		displayFolder: Análise Geral
 		lineageTag: b5bbeddd-55be-4226-9e83-ca951d4b4f0d
 
 		changedProperty = FormatString
 
-	measure Meta = SUM(fMetas[ValorMeta]) * [Rateio Produto]
+	measure 'Total Meta' = SUM(fMetas[Valor Meta]) * [Rateio Produto]
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
 		displayFolder: Análise Geral
 		lineageTag: eb80dd1f-213f-442a-af39-61d0ed9c52ea
@@ -42,17 +42,17 @@ table Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure '% Atingimento Meta' = DIVIDE([Faturamento],[Meta])
+	measure '% Meta' = DIVIDE([Total Faturado],[Total Meta])
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Análise Geral
 		lineageTag: 0463cb4d-4270-4e29-a2cb-45e20f827467
 
 		changedProperty = FormatString
 
-	measure 'Faturamento YoY' =
+	measure 'Total Faturado YoY' =
 			
 			CALCULATE(
-			    [Faturamento],
+			    [Total Faturado],
 			    SAMEPERIODLASTYEAR(dCalendario[Data])
 			)
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
@@ -63,10 +63,10 @@ table Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure 'Qtd Vendas YoY' =
+	measure 'Qtd Notas YoY' =
 			
 			CALCULATE(
-			    [Qtd Vendas],
+			    [Qtd Notas],
 			    SAMEPERIODLASTYEAR(dCalendario[Data])
 			)
 		formatString: #,0
@@ -101,10 +101,10 @@ table Medidas
 
 		changedProperty = FormatString
 
-	measure 'Meta YoY' =
+	measure 'Total Meta YoY' =
 			
 			CALCULATE(
-			    [Meta],
+			    [Total Meta],
 			    SAMEPERIODLASTYEAR(dCalendario[Data])
 			)
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
@@ -115,14 +115,14 @@ table Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure '% Faturamento YoY' = DIVIDE([Faturamento] - [Faturamento YoY],[Faturamento YoY])
+	measure '% Faturamento YoY' = DIVIDE([Total Faturado] - [Total Faturado YoY],[Total Faturado YoY])
 		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Ano x Ano
 		lineageTag: 3c35edb6-82f7-446f-a4f7-914386c1026e
 
 		changedProperty = FormatString
 
-	measure '% Qtd Vendas YoY' = DIVIDE([Qtd Vendas] - [Qtd Vendas YoY],[Qtd Vendas YoY])
+	measure '% Qtd Vendas YoY' = DIVIDE([Qtd Notas] - [Qtd Notas YoY],[Qtd Notas YoY])
 		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Ano x Ano
 		lineageTag: 1396433f-4c12-4261-9408-5dda703642f9
@@ -147,7 +147,7 @@ table Medidas
 			
 			RANKX(
 			    ALL(dVendedor),
-			    [Faturamento]
+			    [Total Faturado]
 			)
 			
 			```
@@ -158,7 +158,7 @@ table Medidas
 	measure 'Faturamento Vendedor Top #1' =
 			
 			CALCULATE(
-			    [Faturamento],
+			    [Total Faturado],
 			    FILTER(dVendedor, [Rank] = 1
 			))
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
@@ -199,7 +199,7 @@ table Medidas
 	measure 'Faturamento Vendedor Top #2' =
 			
 			CALCULATE(
-			    [Faturamento],
+			    [Total Faturado],
 			    FILTER(dVendedor, [Rank] = 2
 			))
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
@@ -213,7 +213,7 @@ table Medidas
 	measure 'Faturamento Vendedor Top #3' =
 			
 			CALCULATE(
-			    [Faturamento],
+			    [Total Faturado],
 			    FILTER(dVendedor, [Rank] = 3
 			))
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
@@ -227,7 +227,7 @@ table Medidas
 	measure 'Faturamento Top #3' =
 			
 			CALCULATE(
-			    [Faturamento],
+			    [Total Faturado],
 			    FILTER(dVendedor, [Rank] <=3)
 			)
 		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
@@ -238,7 +238,7 @@ table Medidas
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
-	measure '% Faturamento Top #3' = DIVIDE([Faturamento Top #3],[Faturamento],0)
+	measure '% Faturamento Top #3' = DIVIDE([Faturamento Top #3],[Total Faturado],0)
 		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Ranking
 		lineageTag: 3f4f606a-d668-408d-bdd0-dd970622be5e
@@ -248,7 +248,7 @@ table Medidas
 	measure 'Qtd Vendas Top #3' =
 			
 			CALCULATE(
-			    [Qtd Vendas],
+			    [Qtd Notas],
 			    FILTER(dVendedor, [Rank] <=3)
 			)
 		formatString: #,0
@@ -269,7 +269,7 @@ table Medidas
 
 		changedProperty = FormatString
 
-	measure '% Qtd Vendas Top #3' = DIVIDE([Qtd Vendas Top #3],[Qtd Vendas],0)
+	measure '% Qtd Vendas Top #3' = DIVIDE([Qtd Vendas Top #3],[Qtd Notas],0)
 		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Ranking
 		lineageTag: e3868c72-8cce-4efd-b055-9c0e8aeb7416
@@ -308,6 +308,7 @@ table Medidas
 			
 			RETURN
 			Gerente & Supervisor & Vendedor
+		displayFolder: Tooltips
 		lineageTag: becd0c45-133e-4e50-9215-49d3b1cd0af3
 
 	measure 'Rateio Produto' = sum(dProduto[Rateio])
@@ -323,6 +324,23 @@ table Medidas
 	measure 'Logo Contato' = "https://onedrive.live.com/embed?resid=E892E4616F7F4170%213006&authkey=%21ACC0S-FHQ54hBfk&width=462&height=190"
 		displayFolder: Contato
 		lineageTag: 169e22b5-3fd8-489b-be3b-6d8c96cd8624
+
+	measure 'Qtd Itens' =
+			
+			SUM(fFaturamento[Qtd Itens])
+		formatString: #,0
+		displayFolder: Análise Geral
+		lineageTag: 3d066e15-51f5-44bf-b358-f4d24e7680b0
+
+	measure 'Qtd Itens YoY' =
+			
+			CALCULATE(
+			    [Qtd Itens],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: #,0
+		displayFolder: Ano x Ano
+		lineageTag: 12e934db-a9f8-462c-8096-9e59062e95af
 
 	column 'Coluna 1'
 		dataType: string

@@ -23,7 +23,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Faturamento"
+                  "Property": "Total Faturado"
                 }
               },
               "queryRef": "Medidas.Faturamento"
@@ -41,7 +41,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Faturamento"
+                "Property": "Total Faturado"
               }
             },
             "direction": "Descending"

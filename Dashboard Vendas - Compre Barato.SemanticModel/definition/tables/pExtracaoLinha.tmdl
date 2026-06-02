@@ -1,0 +1,73 @@
+table pExtracaoLinha
+	lineageTag: 1f0a4cd4-de4c-4fe8-b199-d1f2b3c96de8
+
+	column Nome
+		lineageTag: f0945c0b-3bcb-47d7-a645-0ac5eb30c722
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pExtracaoLinha Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pExtracaoLinha Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pExtracaoLinha Campos'
+		isHidden
+		lineageTag: d7ec1af6-d676-490d-9231-1b62292bc751
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pExtracaoLinha Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pExtracaoLinha Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 92d45023-6e9c-45a4-aba5-bf60fdf44e93
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tabela
+		lineageTag: 2005f1c7-b908-4417-a860-02df054cb3ad
+		summarizeBy: none
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pExtracaoLinha = calculated
+		mode: import
+		source =
+				{
+				    ("Ano", NAMEOF('dCalendario'[Ano]), 0, "Calendário"),
+				    ("Data", NAMEOF('dCalendario'[Data]), 1, "Calendário"),
+				    ("Dia", NAMEOF('dCalendario'[Dia]), 2, "Calendário"),
+				    ("Fim do Mês", NAMEOF('dCalendario'[Fim do Mês]), 3, "Calendário"),
+				    ("Início do Mês", NAMEOF('dCalendario'[Início do Mês]), 4, "Calendário"),
+				    ("Mês", NAMEOF('dCalendario'[Mês]), 5, "Calendário"),
+				    ("Nome do Dia", NAMEOF('dCalendario'[Nome do Dia]), 6, "Calendário"),
+				    ("Nome do Mês", NAMEOF('dCalendario'[Nome do Mês]), 7, "Calendário"),
+				    ("Trimestre", NAMEOF('dCalendario'[Trimestre]), 8, "Calendário"),
+				    ("Nr NF", NAMEOF('fFaturamento'[NFe]), 9, "Faturamento"),
+				    ("Código", NAMEOF('dProduto'[Código Produto]), 10, "Produtos"),
+				    ("Descrição", NAMEOF('dProduto'[Produto]), 11, "Produtos"),
+				    ("Grupo", NAMEOF('dProduto'[Grupo Produto]), 12, "Produtos"),
+				    ("Linha", NAMEOF('dProduto'[Linha Produto]), 13, "Produtos"),
+				    ("Código", NAMEOF('dVendedor'[Código Vendedor]), 14, "Vendedores"),
+				    ("Equipe", NAMEOF('dVendedor'[Equipe Vendas]), 15, "Vendedores"),
+				    ("Gerente", NAMEOF('dVendedor'[Gerente]), 16, "Vendedores"),
+				    ("Nome", NAMEOF('dVendedor'[Vendedor]), 17, "Vendedores"),
+				    ("Supervisor", NAMEOF('dVendedor'[Supervisor]), 18, "Vendedores"),
+				    ("‎", NAMEOF('Medidas'[Medida Vazia]), 19, "")
+				}
+
+	annotation PBI_Id = 262d1ed9b7ec45f2b224d6a125d10b29
+

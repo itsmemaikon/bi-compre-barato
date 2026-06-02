@@ -70,7 +70,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Meta"
+                  "Property": "Total Meta"
                 }
               },
               "queryRef": "Medidas.Meta"
@@ -83,7 +83,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Faturamento"
+                  "Property": "Total Faturado"
                 }
               },
               "queryRef": "Medidas.Faturamento"
