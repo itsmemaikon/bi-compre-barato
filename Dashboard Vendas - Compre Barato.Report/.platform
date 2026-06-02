@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Dashboard Vendas - Compre Barato"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "27db655a-46c9-4918-87d7-10ec0762e4c5"
+  }
+}

@@ -1,0 +1,67 @@
+table dVendedor
+	lineageTag: 4fb10733-31cb-4e14-9f30-8907f106d10b
+
+	column cdVendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 730d7d98-6ab1-4ee4-820e-95e1b6b26bfb
+		summarizeBy: none
+		sourceColumn: cdVendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendedor
+		dataType: string
+		lineageTag: e9dd1cb5-bc1d-4f33-83a1-f0a940882d4c
+		summarizeBy: none
+		sourceColumn: Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supervisor
+		dataType: string
+		lineageTag: 86ad927f-c427-4f2a-945c-b6876c513508
+		summarizeBy: none
+		sourceColumn: Supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gerente
+		dataType: string
+		lineageTag: e6b324b5-905f-4e9a-96e9-bdf968c8494a
+		summarizeBy: none
+		sourceColumn: Gerente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Equipe Vendas'
+		dataType: string
+		lineageTag: bde2985b-1bb9-4678-9bfb-6664336f29cc
+		summarizeBy: none
+		sourceColumn: Equipe Vendas
+
+		annotation SummarizationSetBy = Automatic
+
+	column URL
+		dataType: string
+		lineageTag: 243f8ae3-5a95-4e18-be9d-1e7589275589
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: URL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dVendedor-1b6c7ac4-9784-4a5e-850a-de2f4e119eb1 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Diretório Base de Dados" & "\Base de Dados.xlsx"), null, true),
+				    Planilha1_Sheet = Fonte{[Item="Vendedores",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Cabeçalhos Promovidos",{"cdVendedor", "Vendedor", "Supervisor", "Gerente", "Equipe Vendas", "URL"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"cdVendedor", Int64.Type}, {"Vendedor", type text}, {"Supervisor", type text}, {"Gerente", type text}, {"Equipe Vendas", type text}, {"URL", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

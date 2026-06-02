@@ -1,0 +1,348 @@
+table Medidas
+	lineageTag: d8b6dbed-c997-4cfb-9dac-4cec261e75a2
+
+	measure Faturamento = SUM(fVendas[ValorTotal])
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Análise Geral
+		lineageTag: de031991-ab44-4b7f-84d6-6bff2b73755e
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtd Vendas' = DISTINCTCOUNT(fVendas[NFe])
+		formatString: #,0
+		displayFolder: Análise Geral
+		lineageTag: 6d4e3986-4168-4c43-a4a9-cbbd010a2c8b
+
+		changedProperty = FormatString
+
+	measure 'Ticket Médio' = DIVIDE([Faturamento],[Qtd Vendas])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Análise Geral
+		lineageTag: f82cbfd0-6a18-435d-bad2-1ca745eff908
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Positivação = DISTINCTCOUNT(fVendas[cdProduto])
+		formatString: #,0
+		displayFolder: Análise Geral
+		lineageTag: b5bbeddd-55be-4226-9e83-ca951d4b4f0d
+
+		changedProperty = FormatString
+
+	measure Meta = SUM(fMetas[ValorMeta]) * [Rateio Produto]
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Análise Geral
+		lineageTag: eb80dd1f-213f-442a-af39-61d0ed9c52ea
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Atingimento Meta' = DIVIDE([Faturamento],[Meta])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Análise Geral
+		lineageTag: 0463cb4d-4270-4e29-a2cb-45e20f827467
+
+		changedProperty = FormatString
+
+	measure 'Faturamento YoY' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Ano x Ano
+		lineageTag: 03a65819-4f0f-44a1-8917-7c8b9be30674
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtd Vendas YoY' =
+			
+			CALCULATE(
+			    [Qtd Vendas],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: #,0
+		displayFolder: Ano x Ano
+		lineageTag: cd368379-10c4-4d1c-b9c7-f430cdd0d333
+
+		changedProperty = FormatString
+
+	measure 'Ticket Médio YoY' =
+			
+			CALCULATE(
+			    [Ticket Médio],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Ano x Ano
+		lineageTag: e2b0a356-1a58-489d-8a35-45a760239cbd
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Positivação YoY' =
+			
+			CALCULATE(
+			    [Positivação],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: #,0
+		displayFolder: Ano x Ano
+		lineageTag: b1cf8191-84d1-4eea-9430-e3beba81db1d
+
+		changedProperty = FormatString
+
+	measure 'Meta YoY' =
+			
+			CALCULATE(
+			    [Meta],
+			    SAMEPERIODLASTYEAR(dCalendario[Data])
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Ano x Ano
+		lineageTag: a1a9adc7-875f-4497-a8ca-b02ae65e1ea3
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Faturamento YoY' = DIVIDE([Faturamento] - [Faturamento YoY],[Faturamento YoY])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Ano x Ano
+		lineageTag: 3c35edb6-82f7-446f-a4f7-914386c1026e
+
+		changedProperty = FormatString
+
+	measure '% Qtd Vendas YoY' = DIVIDE([Qtd Vendas] - [Qtd Vendas YoY],[Qtd Vendas YoY])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Ano x Ano
+		lineageTag: 1396433f-4c12-4261-9408-5dda703642f9
+
+		changedProperty = FormatString
+
+	measure '% Ticket Médio YoY' = DIVIDE([Ticket Médio] - [Ticket Médio YoY],[Ticket Médio YoY])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Ano x Ano
+		lineageTag: 2d741756-7a6c-433b-8079-7ca505b624ac
+
+		changedProperty = FormatString
+
+	measure '% Positivação YoY' = DIVIDE([Positivação] - [Positivação YoY],[Positivação YoY])
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Ano x Ano
+		lineageTag: 0034694f-67a8-435e-a9dc-95bf2971c827
+
+		changedProperty = FormatString
+
+	measure Rank = ```
+			
+			RANKX(
+			    ALL(dVendedor),
+			    [Faturamento]
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Ranking
+		lineageTag: f6c004e3-2033-42b7-8714-82913c2d9287
+
+	measure 'Faturamento Vendedor Top #1' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    FILTER(dVendedor, [Rank] = 1
+			))
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Ranking
+		lineageTag: ef827956-dae8-4941-b57c-de8ddd1a0d61
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Vendedor Top #1' =
+			
+			CALCULATE(
+			    SELECTEDvalue(dVendedor[Vendedor]),
+			    FILTER(dVendedor, [Rank] = 1
+			))
+		displayFolder: Ranking
+		lineageTag: 3336f107-c1c1-4a0f-a3be-0b044edf752c
+
+	measure 'Vendedor Top #2' =
+			
+			CALCULATE(
+			    SELECTEDVALUE(dVendedor[Vendedor]),
+			    FILTER(dVendedor, [Rank] = 2
+			))
+		displayFolder: Ranking
+		lineageTag: 78d33418-90bb-4e45-8a52-313a178607a7
+
+	measure 'Vendedor Top #3' =
+			
+			CALCULATE(
+			    SELECTEDVALUE(dVendedor[Vendedor]),
+			    FILTER(dVendedor, [Rank] = 3
+			))
+		displayFolder: Ranking
+		lineageTag: 2c752a94-c291-418d-a370-2023844af3a1
+
+	measure 'Faturamento Vendedor Top #2' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    FILTER(dVendedor, [Rank] = 2
+			))
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Ranking
+		lineageTag: c5c772df-4027-4237-b252-dcfbefd3197b
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Faturamento Vendedor Top #3' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    FILTER(dVendedor, [Rank] = 3
+			))
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Ranking
+		lineageTag: 7bf9b19a-bb5f-41d0-be7a-95fb200c9db4
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Faturamento Top #3' =
+			
+			CALCULATE(
+			    [Faturamento],
+			    FILTER(dVendedor, [Rank] <=3)
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Ranking
+		lineageTag: d89292c4-ab18-4e8f-98ac-9a77b1c513b2
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Faturamento Top #3' = DIVIDE([Faturamento Top #3],[Faturamento],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Ranking
+		lineageTag: 3f4f606a-d668-408d-bdd0-dd970622be5e
+
+		changedProperty = FormatString
+
+	measure 'Qtd Vendas Top #3' =
+			
+			CALCULATE(
+			    [Qtd Vendas],
+			    FILTER(dVendedor, [Rank] <=3)
+			)
+		formatString: #,0
+		displayFolder: Ranking
+		lineageTag: a05d9620-31a6-42d2-b59d-794610e26241
+
+		changedProperty = FormatString
+
+	measure 'Positivação Top #3' =
+			
+			CALCULATE(
+			    [Positivação],
+			    FILTER(dVendedor, [Rank] <=3)
+			)
+		formatString: #,0
+		displayFolder: Ranking
+		lineageTag: 38916f2a-b122-4b6f-aa23-28bdb25ff803
+
+		changedProperty = FormatString
+
+	measure '% Qtd Vendas Top #3' = DIVIDE([Qtd Vendas Top #3],[Qtd Vendas],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Ranking
+		lineageTag: e3868c72-8cce-4efd-b055-9c0e8aeb7416
+
+		changedProperty = FormatString
+
+	measure '% Positivação Top #3' = DIVIDE([Positivação Top #3],[Positivação],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Ranking
+		lineageTag: 23805409-cf64-441e-bce0-e02875a90fa5
+
+		changedProperty = FormatString
+
+	measure 'Medida Vazia' = ""
+		displayFolder: Tooltips
+		lineageTag: 02d5e65f-2cca-4cef-a022-9b61201ea4b4
+
+	measure 'TT 1 Período' = ```
+			
+			VAR Ano = IF(SELECTEDVALUE(dCalendario[Ano]) = BLANK(), "", "Ano: " & SELECTEDVALUE(dCalendario[Ano]))
+			Var Mes = IF(SELECTEDVALUE(dCalendario[Nome do Mês]) = BLANK(), "", " | Mês: " & SELECTEDVALUE(dCalendario[Nome do Mês]))
+			Var Dia = IF(SELECTEDVALUE(dCalendario[Dia]) = BLANK(), "", " | Dia: " & SELECTEDVALUE(dCalendario[Dia]))
+			
+			RETURN
+			Ano & Mes & Dia
+			
+			```
+		displayFolder: Tooltips
+		lineageTag: 506e0442-1a0b-4a6a-9544-03b01af1ec67
+
+	measure 'TT 1 Matriz' =
+			
+			VAR Gerente = IF(SELECTEDVALUE(dVendedor[Gerente]) = BLANK(), "", "Gerente: " & SELECTEDVALUE(dVendedor[Gerente]))
+			Var Supervisor = IF(SELECTEDVALUE(dVendedor[Supervisor]) = BLANK(), "", " | Supervisor: " & SELECTEDVALUE(dVendedor[Supervisor]))
+			Var Vendedor = IF(SELECTEDVALUE(dVendedor[Vendedor]) = BLANK(), "", " | Vendedor: " & SELECTEDVALUE(dVendedor[Vendedor]))
+			
+			RETURN
+			Gerente & Supervisor & Vendedor
+		lineageTag: becd0c45-133e-4e50-9215-49d3b1cd0af3
+
+	measure 'Rateio Produto' = sum(dProduto[Rateio])
+		displayFolder: Análise Geral
+		lineageTag: 9daec1b9-58d3-4f58-9d4f-dae218ea1c34
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Foto Contato' = "https://onedrive.live.com/embed?resid=E892E4616F7F4170%213005&authkey=%21AILYhrWuzFJCRKo&width=1310&height=1337"
+		displayFolder: Contato
+		lineageTag: 9382783a-7716-4f34-aabc-2196bc9113c3
+
+	measure 'Logo Contato' = "https://onedrive.live.com/embed?resid=E892E4616F7F4170%213006&authkey=%21ACC0S-FHQ54hBfk&width=462&height=190"
+		displayFolder: Contato
+		lineageTag: 169e22b5-3fd8-489b-be3b-6d8c96cd8624
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: 224ead65-63a1-420d-ad6c-d4826387c272
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas-5b44979a-3027-4818-8dcb-a01d7c045de2 = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

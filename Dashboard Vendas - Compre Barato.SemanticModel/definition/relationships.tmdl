@@ -1,0 +1,40 @@
+relationship 0550919f-7796-47aa-938e-861a80086783
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.'Início do Mês'
+	toColumn: LocalDateTable_5f09844b-d58f-4aa7-af08-c6fdde05b9ff.Date
+
+relationship 8b73608f-aee8-4d8d-8be2-1e34b94086d2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.'Fim do Mês'
+	toColumn: LocalDateTable_69e98395-5f5b-46f6-a18c-c905a906ad1c.Date
+
+relationship dc79b495-7c13-4719-9a9d-c3559e452533
+	fromColumn: fVendas.DataEmissao
+	toColumn: dCalendario.Data
+
+relationship c71a6470-fdf6-432e-90b0-5ad3fdb400ca
+	fromColumn: fVendas.cdProduto
+	toColumn: dProduto.cdProduto
+
+relationship 0913a68d-2942-45da-bf3b-9f776d0c07b5
+	fromColumn: fVendas.cdVendedor
+	toColumn: dVendedor.cdVendedor
+
+relationship cd9e2fa6-c943-43e5-8f57-113740c71b3a
+	fromColumn: fMetas.cdVendedor
+	toColumn: dVendedor.cdVendedor
+
+relationship f58a88b6-06f2-4999-99da-a75a5ef97dbc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Data
+	toColumn: LocalDateTable_9ef00e82-4555-4c93-ab82-4d91ca943ab9.Date
+
+relationship 8f0f482f-d149-4622-987f-7cf729c967e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Mês/Ano
+	toColumn: LocalDateTable_845d7c8b-b734-4483-af26-a62de89a5c5d.Date
+
+relationship be6a03c1-9c9f-4f65-8dd9-61abec398a77
+	fromColumn: fMetas.Data
+	toColumn: dCalendario.Data
+

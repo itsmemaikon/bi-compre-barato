@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "2ac38e689b01a60d0eb2",
+  "position": {
+    "x": 0.66102997694081722,
+    "y": 40.338201383551109,
+    "z": 10000,
+    "height": 100.35357417371253,
+    "width": 209.56187548039969,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "PBI_CV_81BBAD08_3ADD_466C_8819_9FACA21A6B8F",
+    "query": {
+      "queryState": {
+        "imageUrl": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Logo Contato"
+                }
+              },
+              "queryRef": "Medidas.Logo Contato",
+              "nativeQueryRef": "Logo Contato"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Logo'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "2b96efc1c943b69a69cd"
+}

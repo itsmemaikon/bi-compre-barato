@@ -1,0 +1,192 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY22SU08",
+      "reportVersionAtImport": {
+        "visual": "1.8.71",
+        "report": "2.0.71",
+        "page": "1.3.71"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Dashboard_Vendas22440464091457057.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.71",
+        "report": "2.0.71",
+        "page": "1.3.71"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "simpleImageEBC4593F96F1425FB3D84C5BF02B5075",
+    "PBI_CV_81BBAD08_3ADD_466C_8819_9FACA21A6B8F",
+    "ImageGrid_FC5183B9_926C_45E0_B5F7_0CE9EAF1DA9B",
+    "PBI_CV_FFFE680D_D220_4F62_B16C_C7B5C5732654",
+    "enlightenDataStoryDDFB78A6143E42CFAFBC50CCF18D978D"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY22SU08",
+          "path": "BaseThemes/CY22SU08.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "bronze7767312049366559.png",
+          "path": "bronze7767312049366559.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dashboard_Vendas22440464091457057.json",
+          "path": "Dashboard_Vendas22440464091457057.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "eraser0884534754726356.png",
+          "path": "eraser0884534754726356.png",
+          "type": "Image"
+        },
+        {
+          "name": "home3500806236996703.png",
+          "path": "home3500806236996703.png",
+          "type": "Image"
+        },
+        {
+          "name": "linkedin2590768729578201.png",
+          "path": "linkedin2590768729578201.png",
+          "type": "Image"
+        },
+        {
+          "name": "linkedin6474964085389983.png",
+          "path": "linkedin6474964085389983.png",
+          "type": "Image"
+        },
+        {
+          "name": "linkedin8308889746530885.png",
+          "path": "linkedin8308889746530885.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo06883208743175695.png",
+          "path": "Logo06883208743175695.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo6792687985826726.png",
+          "path": "Logo6792687985826726.png",
+          "type": "Image"
+        },
+        {
+          "name": "Plano_de_Fundo013430070563609675.png",
+          "path": "Plano_de_Fundo013430070563609675.png",
+          "type": "Image"
+        },
+        {
+          "name": "Plano_de_Fundo0988311855418897.png",
+          "path": "Plano_de_Fundo0988311855418897.png",
+          "type": "Image"
+        },
+        {
+          "name": "Plano_de_Fundo18420842871161696.png",
+          "path": "Plano_de_Fundo18420842871161696.png",
+          "type": "Image"
+        },
+        {
+          "name": "Plano_de_Fundo27308817711042555.png",
+          "path": "Plano_de_Fundo27308817711042555.png",
+          "type": "Image"
+        },
+        {
+          "name": "Plano_de_Fundo312101213833024715.png",
+          "path": "Plano_de_Fundo312101213833024715.png",
+          "type": "Image"
+        },
+        {
+          "name": "silver-medal25561749638321385.png",
+          "path": "silver-medal25561749638321385.png",
+          "type": "Image"
+        },
+        {
+          "name": "Tooltip131335729848866056.png",
+          "path": "Tooltip131335729848866056.png",
+          "type": "Image"
+        },
+        {
+          "name": "trophy46501908716778817.png",
+          "path": "trophy46501908716778817.png",
+          "type": "Image"
+        },
+        {
+          "name": "youtube14972251712842577.png",
+          "path": "youtube14972251712842577.png",
+          "type": "Image"
+        },
+        {
+          "name": "youtube2885763042638947.png",
+          "path": "youtube2885763042638947.png",
+          "type": "Image"
+        },
+        {
+          "name": "youtube8631621543818138.png",
+          "path": "youtube8631621543818138.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": false
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

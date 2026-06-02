@@ -1,0 +1,170 @@
+table dCalendario
+	lineageTag: e0194c8f-727d-4eef-bdc0-52b79f2ff846
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: cb9a4976-86a2-4d3e-b91b-e84c81119b06
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: f58a88b6-06f2-4999-99da-a75a5ef97dbc
+			defaultHierarchy: LocalDateTable_9ef00e82-4555-4c93-ab82-4d91ca943ab9.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 65da2bf1-b0eb-42a8-a2a8-99cf9c2f683f
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b2dccc1-3e09-46aa-8283-3e332b5e26d7
+		summarizeBy: sum
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do Mês'
+		dataType: string
+		lineageTag: 7b8784d1-e768-4a67-9792-958cc5aefef0
+		summarizeBy: none
+		sourceColumn: Nome do Mês
+		sortByColumn: Mês
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Início do Mês'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1f8b0997-11d5-405b-8610-d0035bb301ba
+		summarizeBy: none
+		sourceColumn: Início do Mês
+
+		variation Variation
+			isDefault
+			relationship: 0550919f-7796-47aa-938e-861a80086783
+			defaultHierarchy: LocalDateTable_5f09844b-d58f-4aa7-af08-c6fdde05b9ff.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fim do Mês'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 42a5c817-eae5-41b8-baf9-f0a34e4bb95e
+		summarizeBy: none
+		sourceColumn: Fim do Mês
+
+		variation Variation
+			isDefault
+			relationship: 8b73608f-aee8-4d8d-8be2-1e34b94086d2
+			defaultHierarchy: LocalDateTable_69e98395-5f5b-46f6-a18c-c905a906ad1c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: a6851d0d-b6b6-4846-94c9-ca8aa16577f3
+		summarizeBy: sum
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 748a1bc9-28db-49e4-a025-63ce9ae9f2c7
+		summarizeBy: sum
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do Dia'
+		dataType: string
+		lineageTag: 869aa192-851d-41be-8f55-1f953f0f6fd1
+		summarizeBy: none
+		sourceColumn: Nome do Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês/Ano
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b3076ff0-d4e0-4c14-857a-103138fc406e
+		summarizeBy: none
+		sourceColumn: Mês/Ano
+
+		variation Variation
+			isDefault
+			relationship: 8f0f482f-d149-4622-987f-7cf729c967e8
+			defaultHierarchy: LocalDateTable_845d7c8b-b734-4483-af26-a62de89a5c5d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Mês Abrev'
+		dataType: string
+		lineageTag: 4abf45fb-4ff2-4b2b-ae67-f9d47346ff73
+		summarizeBy: none
+		sourceColumn: Mês Abrev
+		sortByColumn: Mês
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dias do Mês'
+		dataType: int64
+		formatString: 0
+		lineageTag: 48a3f98f-cb28-4fcb-b4be-07775bfb1e5b
+		summarizeBy: sum
+		sourceColumn: Dias do Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario-72c3714c-1743-46d4-a37f-6aacb5ce2dae = m
+		mode: import
+		source =
+				let
+				    Fonte = List.Dates(#date(2020, 1, 1), 731, #duration(1, 0, 0, 0)),
+				    #"Convertido para Tabela" = Table.FromList(Fonte, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Convertido para Tabela",{{"Column1", "Data"}}),
+				    #"Ano Inserido" = Table.AddColumn(#"Colunas Renomeadas", "Ano", each Date.Year([Data]), Int64.Type),
+				    #"Mês Inserido" = Table.AddColumn(#"Ano Inserido", "Mês", each Date.Month([Data]), Int64.Type),
+				    #"Nome do Mês Inserido" = Table.AddColumn(#"Mês Inserido", "Nome do Mês", each Date.MonthName([Data]), type text),
+				    #"Início do Mês Inserido" = Table.AddColumn(#"Nome do Mês Inserido", "Início do Mês", each Date.StartOfMonth([Data]), type date),
+				    #"Fim do Mês Inserido" = Table.AddColumn(#"Início do Mês Inserido", "Fim do Mês", each Date.EndOfMonth([Data]), type date),
+				    #"Trimestre Inserido" = Table.AddColumn(#"Fim do Mês Inserido", "Trimestre", each Date.QuarterOfYear([Data]), Int64.Type),
+				    #"Dia Inserido" = Table.AddColumn(#"Trimestre Inserido", "Dia", each Date.Day([Data]), Int64.Type),
+				    #"Nome do Dia Inserido" = Table.AddColumn(#"Dia Inserido", "Nome do Dia", each Date.DayOfWeekName([Data]), type text),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Nome do Dia Inserido", "Mês/Ano", each Text.Combine({[Nome do Mês], Text.From([Ano], "pt-BR")}, "/"), type text),
+				    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Coluna Mesclada Inserida",{{"Nome do Dia", Text.Proper, type text}, {"Mês/Ano", Text.Proper, type text}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colocar Cada Palavra Em Maiúscula",{{"Data", type date}, {"Ano", Int64.Type}, {"Mês", Int64.Type}, {"Nome do Mês", type text}, {"Início do Mês", type date}, {"Fim do Mês", type date}, {"Trimestre", Int64.Type}, {"Dia", Int64.Type}, {"Nome do Dia", type text}, {"Mês/Ano", type date}}),
+				    #"Primeiros Caracteres Inseridos" = Table.AddColumn(#"Tipo Alterado", "Mês Abrev", each Text.Start([Nome do Mês], 3), type text),
+				    #"Colocar Cada Palavra Em Maiúscula1" = Table.TransformColumns(#"Primeiros Caracteres Inseridos",{{"Mês Abrev", Text.Proper, type text}, {"Nome do Mês", Text.Proper, type text}}),
+				    #"Dias inseridos no Mês" = Table.AddColumn(#"Colocar Cada Palavra Em Maiúscula1", "Dias do Mês", each Date.DaysInMonth([Data]), Int64.Type)
+				in
+				    #"Dias inseridos no Mês"
+
+	annotation PBI_ResultType = Table
+

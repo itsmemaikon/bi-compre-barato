@@ -1,0 +1,7 @@
+expression 'Diretório Base de Dados' = "C:\BI\bi-compre-barato\Base de Dados" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 1621796f-028c-4b7c-85fb-1f287279a66b
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navegação
+

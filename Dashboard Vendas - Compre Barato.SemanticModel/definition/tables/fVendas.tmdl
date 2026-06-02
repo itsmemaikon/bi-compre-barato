@@ -1,0 +1,93 @@
+table fVendas
+	lineageTag: 8d6d911a-4f32-4a81-9643-dd90f39c8c5f
+
+	column DataEmissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 74e17fa2-c9a9-4faf-b4cf-7c58e8e28eb3
+		summarizeBy: none
+		sourceColumn: DataEmissao
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NFe
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b0b08bf-68ca-47e6-88bd-b7c4fce77c85
+		summarizeBy: sum
+		sourceColumn: NFe
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdProduto
+		dataType: int64
+		formatString: 0
+		lineageTag: da25c752-23b5-4559-9ac5-a203b84c83c3
+		summarizeBy: none
+		sourceColumn: cdProduto
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdVendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: 681661ed-2aff-4a49-a4b3-5b835b777d0d
+		summarizeBy: none
+		sourceColumn: cdVendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdItens
+		dataType: int64
+		formatString: #,0
+		lineageTag: bdc20918-16f6-41de-9b44-8314754a56fb
+		summarizeBy: sum
+		sourceColumn: QtdItens
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorUnitario
+		dataType: double
+		lineageTag: e36ded35-6992-497f-ba7e-324f28e45f42
+		summarizeBy: sum
+		sourceColumn: ValorUnitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorTotal
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 19adeea6-8cd6-45c9-889b-706eb2c0bfa3
+		summarizeBy: sum
+		sourceColumn: ValorTotal
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition fVendas-0e896f0f-f6a2-429c-b1f7-4a587255b1d0 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Diretório Base de Dados" & "\Base de Dados.xlsx"), null, true),
+				    Planilha1_Sheet = Fonte{[Item="Vendas",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Cabeçalhos Promovidos",{"DataEmissao", "NFe", "cdProduto", "cdVendedor", "QtdItens", "ValorUnitario", "ValorTotal"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"DataEmissao", type date}, {"NFe", Int64.Type}, {"cdProduto", Int64.Type}, {"cdVendedor", Int64.Type}, {"QtdItens", Int64.Type}, {"ValorUnitario", type number}, {"ValorTotal", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

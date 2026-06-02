@@ -1,0 +1,70 @@
+table dProduto
+	lineageTag: da01d73e-0c2d-4ef6-a063-d70dc1f48646
+
+	column cdProduto
+		dataType: int64
+		formatString: 0
+		lineageTag: 18979579-38fe-441b-9b56-8b5adc10bd0e
+		summarizeBy: none
+		sourceColumn: cdProduto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Produto
+		dataType: string
+		lineageTag: 05ca00a7-c56e-4a6d-b2c8-fb50b605d988
+		summarizeBy: none
+		sourceColumn: Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grupo Produto'
+		dataType: string
+		lineageTag: 9d301c9f-659f-42fe-b6d4-2ea4163daec1
+		summarizeBy: none
+		sourceColumn: Grupo Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Linha Produto'
+		dataType: string
+		lineageTag: 04d8ab86-f356-4238-a7ab-3f68ef5f5bc2
+		summarizeBy: none
+		sourceColumn: Linha Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Preço Unitário'
+		dataType: double
+		lineageTag: 97b55261-9b66-4297-b4a7-96a9c060b1bd
+		summarizeBy: none
+		sourceColumn: Preço Unitário
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Rateio
+		dataType: double
+		lineageTag: 48af5318-ea60-42ff-9837-f3c50a44b22a
+		summarizeBy: none
+		sourceColumn: Rateio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dProduto-44b45729-9962-4950-98bd-adb82e097522 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Diretório Base de Dados" & "\Base de Dados.xlsx"), null, true),
+				    Planilha1_Sheet = Fonte{[Item="Produtos",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Cabeçalhos Promovidos",{"cdProduto", "Produto", "Grupo Produto", "Linha Produto", "Preço Unitário", "Rateio"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Outras Colunas Removidas",{{"cdProduto", Int64.Type}, {"Produto", type text}, {"Grupo Produto", type text}, {"Linha Produto", type text}, {"Preço Unitário", type number}, {"Rateio", Percentage.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
